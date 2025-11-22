@@ -84,12 +84,17 @@ const writtenTestimonials = [
 // --- COMPONENTS ---
 
 // 1. Spotlight Card Component for UX Glow Effect
-const SpotlightCard = ({ children, className = "" }) => {
-  const divRef = useRef(null);
+interface SpotlightCardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const SpotlightCard = ({ children, className = "" }: SpotlightCardProps) => {
+  const divRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current) return;
     const rect = divRef.current.getBoundingClientRect();
     setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
@@ -119,7 +124,9 @@ const SpotlightCard = ({ children, className = "" }) => {
 export default function Page() {
   const CALENDLY_URL = "https://calendly.com/your-agency/growth-call"; // replace with real link
 
-  const [lightbox, setLightbox] = useState(null);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(
+    null
+  );
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -130,7 +137,7 @@ export default function Page() {
       const windowHeight =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
-      const scroll = `${totalScroll / windowHeight}`;
+      const scroll = totalScroll / windowHeight;
       setScrollProgress(Number(scroll));
     };
     window.addEventListener("scroll", handleScroll);
