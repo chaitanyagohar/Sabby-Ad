@@ -196,11 +196,19 @@ export default function Page() {
       <style>{`
         @keyframes float {
           0% { transform: translateY(0px); }
-          50% { transform: translateY(-6px); }
+          50% { transform: translateY(-10px); }
           100% { transform: translateY(0px); }
         }
         .animate-float {
-          animation: float 5s ease-in-out infinite;
+          animation: float 2s ease-in infinite;
+        }
+          @keyframes smallfloat {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-3px); }
+          100% { transform: translateY(0px); }
+        }
+        .animate-smallfloat {
+          animation: smallfloat 6s ease-in infinite;
         }
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(10px); }
@@ -246,7 +254,7 @@ export default function Page() {
             <div className="absolute -bottom-40 left-1/3 h-72 w-72 rounded-full bg-cyan-400/10 blur-[100px]" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 lg:flex lg:items-center lg:gap-16 lg:py-20">
+          <div className="relative z-10 mx-auto max-w-6xl px-4 py-6 flex flex-col lg:flex-row lg:items-center lg:gap-16 lg:py-20">
             <div className="lg:w-1/2 space-y-6 animate-fade-in">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-slate-950/70 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-cyan-200 shadow-[0_0_25px_rgba(8,145,178,0.35)] backdrop-blur-md">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -263,34 +271,50 @@ export default function Page() {
                 </span>
               </h1>
 
+              {/* MOBILE VIDEO (shows only on mobile, before paragraph) */}
+              <div className="mt-4 block lg:hidden">
+                <div className="relative w-full max-w-md rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-3 shadow-[0_24px_70px_rgba(8,47,73,0.6)] backdrop-blur-xl">
+                  <p className="mb-3 pl-1 text-xs font-medium text-slate-200 flex items-center gap-2">
+                    <span className="flex h-2 w-2 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                    </span>
+                    Watch how the AI Growth Engine works (3 min)
+                  </p>
+                  <div className="relative w-full overflow-hidden rounded-2xl border border-slate-700 bg-black aspect-video">
+                    <video
+                      className="h-full w-full object-cover opacity-90"
+                      src="/videos/replace-this.mp4"
+                      controls
+                    />
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                      <div className="h-16 w-16 rounded-full bg-cyan-500/20 flex items-center justify-center backdrop-blur-sm">
+                        <div className="h-12 w-12 rounded-full bg-cyan-500 text-slate-950 flex items-center justify-center pl-1 shadow-lg shadow-cyan-500/40">
+                          <svg
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            className="h-5 w-5"
+                          >
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
+                  </div>
+                  <p className="mt-3 px-1 text-[11px] text-slate-400">
+                    Short breakdown of how we combine lead generation,
+                    automations and AI callers into one cohesive growth system.
+                  </p>
+                </div>
+              </div>
+
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
                 We run content-driven lead generation campaigns and then nurture
                 those leads on autopilot with AI Drip Flow Automations and
                 AI-powered voice agents, so your calendar fills with serious
                 site visits instead of cold enquiries.
               </p>
-
-              {/* Pain vs Solution */}
-              <div className="mt-2 grid gap-3 sm:grid-cols-2 text-xs sm:text-[13px]">
-                <div className="rounded-2xl border border-red-500/20 bg-slate-950/60 p-4 transition-colors hover:bg-slate-900 hover:border-red-500/30">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red-300/90">
-                    Pain
-                  </p>
-                  <p className="mt-1 text-slate-300">
-                    Leads come in but follow ups are slow, teams are busy and
-                    site visits keep getting delayed or missed.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-emerald-500/30 bg-slate-950/70 p-4 shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-colors hover:bg-slate-900 hover:border-emerald-500/50">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300/90">
-                    Solution
-                  </p>
-                  <p className="mt-1 text-slate-200">
-                    Always-on AI flows that reply in minutes, nurture, follow up
-                    and auto-book qualified site visits for your team.
-                  </p>
-                </div>
-              </div>
 
               {/* MAIN CTA BUTTON (Calendly) */}
               <div className="space-y-4 pt-2">
@@ -301,7 +325,6 @@ export default function Page() {
                     target="_blank"
                     rel="noreferrer"
                     className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold tracking-wide text-slate-950 shadow-xl shadow-cyan-500/30 transition hover:bg-cyan-400 hover:scale-105"
-
                   >
                     Book Your Free AI Growth Call
                   </a>
@@ -339,14 +362,14 @@ export default function Page() {
               </div>
             </div>
 
-            {/* 2. VIDEO SECTION (hero side) */}
-            <div className="mt-12 lg:mt-0 lg:w-1/2 flex justify-center">
+            {/* DESKTOP VIDEO (only on lg+) */}
+            <div className="mt-12 lg:mt-0 lg:w-1/2 hidden lg:flex justify-center">
               <div className="relative w-full max-w-md rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-3 shadow-[0_24px_70px_rgba(8,47,73,0.6)] backdrop-blur-xl transition hover:scale-[1.01] duration-500 group">
                 <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-cyan-500/10 blur-3xl group-hover:bg-cyan-500/20 transition-colors" />
                 <p className="mb-3 pl-1 text-xs font-medium text-slate-200 flex items-center gap-2">
                   <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
                   </span>
                   Watch how the AI Growth Engine works (3 min)
                 </p>
@@ -380,6 +403,7 @@ export default function Page() {
             </div>
           </div>
         </section>
+
 
         {/* 2.5 STATS TICKER (Uses your stats array) */}
         <div className="w-full border-b border-slate-800 bg-slate-950/50 py-3 overflow-hidden flex relative z-20">
@@ -444,12 +468,100 @@ export default function Page() {
               href={CALENDLY_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-slate-800 border border-slate-700 px-5 py-2 text-xs font-semibold tracking-wide text-slate-200 shadow-md transition-all hover:bg-slate-700 hover:border-cyan-500/50 hover:text-cyan-400 hover:scale-105"
+              className="animate-smallfloat inline-flex items-center justify-center rounded-full bg-slate-800 border border-slate-700 px-5 py-2 text-xs font-semibold tracking-wide text-slate-200 shadow-xl shadow-gray-500/30 transition-all hover:bg-slate-700 hover:border-cyan-500/50 hover:text-cyan-400 hover:scale-105"
             >
               Book My Calendly Slot
             </a>
           </div>
         </section>
+        {/* Pain + System Fix Section */}
+ <section className="border-b border-slate-800 bg-slate-950 relative overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+       style={{
+         backgroundImage:
+           "linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(to right, #94a3b8 1px, transparent 1px)",
+         backgroundSize: "40px 40px",
+       }}
+  />
+
+  <div className="mx-auto max-w-6xl px-4 py-14">
+    <div className="max-w-xl mb-10">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
+        The Real Estate Growth Problem
+      </p>
+      <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-slate-50">
+        Why most CPs & Developers struggle to scale consistently.
+      </h2>
+    </div>
+
+    <div className="grid gap-6 md:grid-cols-2">
+      {/* PAIN CARD */}
+      <div className="rounded-2xl border border-red-500/20 bg-slate-900/70 p-6 shadow-[0_0_40px_rgba(220,38,38,0.08)] hover:bg-slate-900 transition-all duration-300">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red-400">
+          Core Problems
+        </p>
+
+        <ul className="mt-4 space-y-3 text-sm text-slate-300">
+          <li className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
+            No predictable stream of qualified leads coming daily.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
+            Follow-ups are inconsistent and slow — leads go cold fast.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
+            Teams manually chase enquiries and miss 40–60% of opportunities.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
+            No structured lifecycle: leads come in but do not convert.
+          </li>
+        </ul>
+      </div>
+
+      {/* SOLUTION CARD */}
+      <div className="rounded-2xl border border-emerald-500/30 bg-slate-900/80 p-6 shadow-[0_0_50px_rgba(16,185,129,0.12)] hover:bg-slate-900 transition-all duration-300">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-400">
+          Our System Fixes This
+        </p>
+
+        <ul className="mt-4 space-y-3 text-sm text-slate-200">
+          <li className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Content-driven Lead Generation campaigns bring daily qualified leads.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            AI-powered Drip Flow automations reply instantly — 24/7.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Behaviour-based nurturing moves leads through their buying journey.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            AI voice callers pre-qualify & auto-book site visits for your team.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Bottom CTA strip */}
+    <div className="mt-10 text-center">
+      <a
+        href={CALENDLY_URL}
+        target="_blank"
+        rel="noreferrer"
+        className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold text-slate-950 shadow-xl shadow-xl shadow-cyan-500/30 hover:bg-cyan-400 hover:scale-105 transition-all"
+      >
+        Fix My Lead Flow →
+      </a>
+    </div>
+  </div>
+</section>
+
 
         {/* 4. LEADS + DRIP FLOW AUTOMATION + AI VOICE CALLER AGENTS */}
         <section className="border-b border-slate-800 bg-slate-950 relative overflow-hidden">
@@ -541,7 +653,7 @@ export default function Page() {
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-2 inline-flex items-center justify-center rounded-full border border-cyan-500/60 bg-slate-950/60 px-4 py-2 text-xs font-medium text-cyan-200 shadow-sm transition hover:bg-slate-900 hover:border-cyan-400 hover:shadow-cyan-900/40"
+                className="animate-float mt-2 inline-flex items-center justify-center rounded-full border border-cyan-500/60 bg-slate-950/60 px-4 py-2 text-xs font-medium text-cyan-200 shadow-xl shadow-cyan-800/30 transition hover:bg-slate-900 hover:border-cyan-400 hover:shadow-cyan-900/40"
               >
                 Book Your Growth Call
               </a>
