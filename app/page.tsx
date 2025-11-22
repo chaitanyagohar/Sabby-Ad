@@ -300,7 +300,8 @@ export default function Page() {
                     href={CALENDLY_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="animate-float relative inline-flex items-center justify-center rounded-full bg-cyan-500 px-8 py-4 text-sm font-bold tracking-wide text-slate-950 shadow-[0_10px_35px_rgba(34,211,238,0.4)] ring-1 ring-cyan-300/50 transition-all hover:bg-cyan-400 hover:scale-[1.02] focus-visible:outline-none"
+                    className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold tracking-wide text-slate-950 shadow-xl shadow-cyan-500/30 transition hover:bg-cyan-400 hover:scale-105"
+
                   >
                     Book Your Free AI Growth Call
                   </a>
@@ -420,7 +421,7 @@ export default function Page() {
               href={CALENDLY_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex shrink-0 items-center justify-center rounded-full bg-cyan-500 px-5 py-2.5 text-[11px] font-bold text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.5)] animate-pulse"
+              className="inline-flex shrink-0 items-center justify-center rounded-full bg-cyan-500 px-7 py-3 text-xs font-bold text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.5)] animate-pulse"
             >
               Book Call
             </a>
@@ -1102,7 +1103,8 @@ export default function Page() {
                       href={CALENDLY_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-8 py-3.5 text-sm font-bold tracking-wide text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400 hover:scale-105"
+                    className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold tracking-wide text-slate-950 shadow-xl shadow-cyan-500/30 transition hover:bg-cyan-400 hover:scale-105"
+
                     >
                       Book Your AI Growth Call
                     </a>
