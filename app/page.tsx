@@ -81,6 +81,44 @@ const writtenTestimonials = [
   },
 ];
 
+const adScreenshots: { img: string; caption: string; name: string }[] = [
+  {
+    img: "/ss1.jpeg",
+    caption: "Yamuna Expressway Campaign",
+    name: "PapaTOXY Consultants LLP",
+  },
+  {
+    img: "/ss2.jpeg",
+    caption: "Sobha Noida Sec-1 Campaign",
+    name: "Pulkit Gupta Estates",
+  },
+  {
+    img: "/ss3.jpeg",
+    caption: "Emaar Serenity Hills Gurgaon",
+    name: "Apni Properties",
+  },
+  {
+    img: "/ss4.jpeg",
+    caption: "Ajmera Marina, Bangalore",
+    name: "Propphase Realtors",
+  },
+  {
+    img: "/ss5.jpeg",
+    caption: "The Aaranyas, Almora, Uttrakhand",
+    name: "Kumar Infratech",
+  },
+  {
+    img: "/ss6.jpeg",
+    caption: "Grace Resilvia, Gurgaon",
+    name: "Apni Properties",
+  },
+  {
+    img: "/ss7.jpeg",
+    caption: "Nobel Economic Township",
+    name: "BSingh Realty",
+  },
+];
+
 // --- COMPONENTS ---
 
 // 1. Spotlight Card Component for UX Glow Effect
@@ -346,12 +384,17 @@ export default function Page() {
         <div className="w-full border-b border-slate-800 bg-slate-950/50 py-3 overflow-hidden flex relative z-20">
           <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-950 to-transparent z-10" />
           <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-950 to-transparent z-10" />
-          
+
           <div className="flex animate-loop-scroll whitespace-nowrap pause-animation items-center">
             {/* Render 3 times for seamless looping */}
             {[...stats, ...stats, ...stats].map((stat, i) => (
-              <div key={i} className="flex items-center gap-3 text-xs mx-8 opacity-80 hover:opacity-100 transition-opacity">
-                <span className="font-semibold text-slate-300">{stat.name}</span>
+              <div
+                key={i}
+                className="flex items-center gap-3 text-xs mx-8 opacity-80 hover:opacity-100 transition-opacity"
+              >
+                <span className="font-semibold text-slate-300">
+                  {stat.name}
+                </span>
                 <span className="h-1 w-1 rounded-full bg-slate-700" />
                 <span className="text-emerald-400 font-mono tracking-tight bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
                   {stat.monthly}/mo
@@ -410,7 +453,7 @@ export default function Page() {
         {/* 4. LEADS + DRIP FLOW AUTOMATION + AI VOICE CALLER AGENTS */}
         <section className="border-b border-slate-800 bg-slate-950 relative overflow-hidden">
           <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-cyan-900/10 blur-[120px] rounded-full pointer-events-none" />
-          
+
           <div className="mx-auto max-w-6xl px-4 py-16 relative z-10">
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
@@ -529,11 +572,21 @@ export default function Page() {
                   className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-3 hover:border-slate-700 transition-colors duration-300"
                 >
                   <div className="relative w-full overflow-hidden rounded-xl bg-black aspect-video border border-slate-800 group cursor-pointer">
-                    <video className="h-full w-full opacity-80 group-hover:opacity-60 transition-all duration-300" src={item.video} controls />
+                    <video
+                      className="h-full w-full opacity-80 group-hover:opacity-60 transition-all duration-300"
+                      src={item.video}
+                      controls
+                    />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                       <div className="h-10 w-10 rounded-full bg-slate-900/80 flex items-center justify-center backdrop-blur text-white group-hover:scale-110 transition-transform">
-                          <svg fill="currentColor" viewBox="0 0 24 24" className="h-4 w-4 ml-0.5"><path d="M8 5v14l11-7z"/></svg>
-                       </div>
+                      <div className="h-10 w-10 rounded-full bg-slate-900/80 flex items-center justify-center backdrop-blur text-white group-hover:scale-110 transition-transform">
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          className="h-4 w-4 ml-0.5"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                   <div className="mt-3 text-xs text-slate-300 p-1">
@@ -568,7 +621,8 @@ export default function Page() {
                   className="h-full w-full"
                   style={{
                     transform: `translateY(-${activeTestimonial * 100}%)`,
-                    transition: "transform 700ms cubic-bezier(0.4, 0, 0.2, 1)",
+                    transition:
+                      "transform 700ms cubic-bezier(0.4, 0, 0.2, 1)",
                   }}
                 >
                   {writtenTestimonials.map((t, idx) => (
@@ -577,17 +631,19 @@ export default function Page() {
                       className="h-full w-full flex flex-col justify-center items-center text-center px-4 md:px-12 gap-3"
                     >
                       <div className="mb-2">
-                         <span className="text-4xl text-slate-700 font-serif leading-none">&ldquo;</span>
+                        <span className="text-4xl text-slate-700 font-serif leading-none">
+                          &ldquo;
+                        </span>
                       </div>
                       <p className="text-sm md:text-base font-medium text-slate-100 leading-relaxed">
                         {t.quote}
                       </p>
                       <div className="mt-2 flex flex-col items-center">
                         <p className="text-xs font-bold text-cyan-400 uppercase tracking-wide">
-                           {t.name}
+                          {t.name}
                         </p>
                         <p className="text-[10px] text-slate-500">
-                           {t.company}
+                          {t.company}
                         </p>
                       </div>
                     </div>
@@ -637,54 +693,57 @@ export default function Page() {
           md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-5 md:overflow-visible md:pb-0 scrollbar-hide
         "
               >
-                {[
-                  {
-                    img: "/ss1.jpeg",
-                    caption: "Yamuna Expressway Campaign",
-                    name: "PapaTOXY Consultants LLP",
-                  },
-                  {
-                    img: "/ss2.jpeg",
-                    caption: "Sobha Noida Sec-1 Campaign",
-                    name: "Pulkit Gupta Estates",
-                  },
-                  {
-                    img: "/ss3.jpeg",
-                    caption: "Emaar Serenity Hills Gurgaon",
-                    name: "Apni Properties",
-                  },
-                  {
-                    img: "/ss4.jpeg",
-                    caption: "Ajmera Marina, Bangalore",
-                    name: "Propphase Realtors",
-                  },
-                  {
-                    img: "/ss5.jpeg",
-                    caption: "The Aaranyas, Almora, Uttrakhand",
-                    name: "Kumar Infratech",
-                  },
-                  {
-                    img: "/ss6.jpeg",
-                    caption: "Grace Resilvia, Gurgaon",
-                    name: "Apni Properties",
-                  },
-                  {
-                    img: "/ss7.jpeg",
-                    caption: "Nobel Economic Township",
-                    name: "BSingh Realty",
-                  },
+                {adScreenshots.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="
+        flex flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-4 gap-3
+        min-w-[80%] snap-start md:min-w-0 hover:border-slate-700 transition-colors
+      "
+                  >
+                    {/* Client Name */}
+                    <p className="text-[10px] font-bold text-cyan-400 tracking-wide uppercase">
+                      {item.name}
+                    </p>
 
-                  // 8th “See More” Card
-                  { seeMore: true, link: CALENDLY_URL },
-                ].map((item, idx) =>
-                  item.seeMore ? (
-                    // SEE MORE CARD
-                    <a
-                      key={idx}
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="
+                    {/* Caption */}
+                    <p className="text-sm font-semibold text-slate-50">
+                      {item.caption}
+                    </p>
+
+                    {/* Image */}
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setLightbox({
+                          src: item.img,
+                          alt: item.caption,
+                        })
+                      }
+                      className="relative w-full overflow-hidden rounded-xl border border-slate-800 bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 group"
+                    >
+                      <img
+                        src={item.img}
+                        alt="ad screenshot"
+                        className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </button>
+
+                    {/* Verified */}
+                    <p className="text-[10px] text-slate-500 flex items-center gap-1.5 mt-auto">
+                      <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                      Verified Client
+                    </p>
+                  </div>
+                ))}
+
+                {/* SEE MORE CARD */}
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
         flex flex-col justify-center items-center gap-3
         min-w-[80%] snap-start md:min-w-0
         rounded-2xl border border-slate-800 bg-slate-900/40
@@ -692,64 +751,18 @@ export default function Page() {
         hover:bg-slate-900/70 transition-all duration-300 hover:scale-[1.02]
         group
       "
-                    >
-                      <p className="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300">
-                        See More
-                      </p>
-                      <p className="text-xs text-slate-400 text-center px-4">
-                        View more ad accounts, spends & dashboards
-                      </p>
+                >
+                  <p className="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300">
+                    See More
+                  </p>
+                  <p className="text-xs text-slate-400 text-center px-4">
+                    View more ad accounts, spends & dashboards
+                  </p>
 
-                      <div className="mt-2 px-4 py-1.5 text-[12px] font-medium text-cyan-300 border border-cyan-400/40 rounded-full group-hover:bg-cyan-400/10 transition-colors">
-                        Explore →
-                      </div>
-                    </a>
-                  ) : (
-                    // NORMAL CLIENT CARD
-                    <div
-                      key={idx}
-                      className="
-        flex flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-4 gap-3
-        min-w-[80%] snap-start md:min-w-0 hover:border-slate-700 transition-colors
-      "
-                    >
-                      {/* Client Name */}
-                      <p className="text-[10px] font-bold text-cyan-400 tracking-wide uppercase">
-                        {item.name}
-                      </p>
-
-                      {/* Caption */}
-                      <p className="text-sm font-semibold text-slate-50">
-                        {item.caption}
-                      </p>
-
-                      {/* Image */}
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setLightbox({
-                            src: item.img,
-                            alt: item.caption,
-                          })
-                        }
-                        className="relative w-full overflow-hidden rounded-xl border border-slate-800 bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 group"
-                      >
-                        <img
-                          src={item.img}
-                          alt="ad screenshot"
-                          className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </button>
-
-                      {/* Verified */}
-                      <p className="text-[10px] text-slate-500 flex items-center gap-1.5 mt-auto">
-                        <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-                        Verified Client
-                      </p>
-                    </div>
-                  )
-                )}
+                  <div className="mt-2 px-4 py-1.5 text-[12px] font-medium text-cyan-300 border border-cyan-400/40 rounded-full group-hover:bg-cyan-400/10 transition-colors">
+                    Explore →
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -834,9 +847,22 @@ export default function Page() {
                         className="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                       />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                         <div className="bg-slate-950/80 rounded-full p-2">
-                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                         </div>
+                        <div className="bg-slate-950/80 rounded-full p-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                            />
+                          </svg>
+                        </div>
                       </div>
                     </button>
 
@@ -929,7 +955,10 @@ export default function Page() {
 
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {[1, 2, 3].map((idx) => (
-                <SpotlightCard key={idx} className="p-5 flex flex-col gap-3 group">
+                <SpotlightCard
+                  key={idx}
+                  className="p-5 flex flex-col gap-3 group"
+                >
                   <p className="text-[11px] uppercase tracking-[0.15em] text-cyan-300 group-hover:text-cyan-200">
                     Playbook
                   </p>
@@ -1025,19 +1054,27 @@ export default function Page() {
                 <div className="mt-5 grid gap-4 text-xs text-slate-300 sm:grid-cols-2 max-w-xl">
                   <div>
                     <p className="text-slate-500 mb-0.5">Primary hub</p>
-                    <p className="font-medium text-slate-200">New Delhi, India</p>
+                    <p className="font-medium text-slate-200">
+                      New Delhi, India
+                    </p>
                   </div>
                   <div>
                     <p className="text-slate-500 mb-0.5">Serving clients in</p>
-                    <p className="font-medium text-slate-200">India, US, UK, Europe, Middle East & APAC</p>
+                    <p className="font-medium text-slate-200">
+                      India, US, UK, Europe, Middle East & APAC
+                    </p>
                   </div>
                   <div>
                     <p className="text-slate-500 mb-0.5">Availability</p>
-                    <p className="font-medium text-slate-200">By appointment via Calendly</p>
+                    <p className="font-medium text-slate-200">
+                      By appointment via Calendly
+                    </p>
                   </div>
                   <div>
                     <p className="text-slate-500 mb-0.5">Communication</p>
-                    <p className="font-medium text-slate-200">Zoom, Google Meet, Slack & WhatsApp</p>
+                    <p className="font-medium text-slate-200">
+                      Zoom, Google Meet, Slack & WhatsApp
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1061,14 +1098,14 @@ export default function Page() {
                     tailored to your model.
                   </p>
                   <div className="pt-2">
-                     <a
-                    href={CALENDLY_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-8 py-3.5 text-sm font-bold tracking-wide text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400 hover:scale-105"
-                  >
-                    Book Your AI Growth Call
-                  </a>
+                    <a
+                      href={CALENDLY_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-8 py-3.5 text-sm font-bold tracking-wide text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400 hover:scale-105"
+                    >
+                      Book Your AI Growth Call
+                    </a>
                   </div>
                 </div>
               </div>
