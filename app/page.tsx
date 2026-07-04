@@ -1,47 +1,40 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
-// --- DATA CONSTANTS ---
-const stats = [
+const teamMembers = [
   {
-    name: "Luke Salela",
-    monthly: "$180,000",
-    annual: "$2,160,000",
-    timeframe: "20 months",
+    name: "Darshan Jade",
+    role: "CMO",
+    image: "/team/darshan.jpg",
+    description:
+      "Leads growth strategy, brand positioning, and demand generation to help clients scale faster and reach the right audience.",
   },
   {
-    name: "Luke Kintzel",
-    monthly: "$120,000",
-    annual: "$1,440,000",
-    timeframe: "8 months",
+    name: "Chaitanya Gohar",
+    role: "CTO",
+    image: "/team/chaitanya.jpg",
+    description:
+      "Architects and oversees the technology behind every solution, ensuring secure, scalable, and high-performance systems.",
   },
   {
-    name: "Otavio Zerbini",
-    monthly: "$110,000",
-    annual: "$1,320,000",
-    timeframe: "10 months",
+    name: "Rishabh Verma",
+    role: "Content Manager",
+    image: "/team/rishabh.jpg",
+    description:
+      "Creates compelling content that strengthens brand identity, engages audiences, and drives meaningful conversions.",
   },
   {
-    name: "Thibault Doutriaux",
-    monthly: "$105,000",
-    annual: "$1,260,000",
-    timeframe: "14 months",
-  },
-  {
-    name: "Zander Woodford-Smith",
-    monthly: "$95,000",
-    annual: "$1,140,000",
-    timeframe: "18 months",
-  },
-  {
-    name: "Sam Urparni",
-    monthly: "$85,000",
-    annual: "$1,020,000",
-    timeframe: "14 months",
+    name: "Anshika Goel",
+    role: "Client Success Executive",
+    image: "/team/anshika.jpg",
+    description:
+      "Acts as the primary point of contact for clients, ensuring smooth communication, timely support, and long-term success.",
   },
 ];
 
+// --- DATA CONSTANTS ---
 const writtenTestimonials = [
   {
     name: "Sanju Sharma",
@@ -68,16 +61,16 @@ const writtenTestimonials = [
       "We started getting faster confirmations on bookings as automations were talking to prospects even after office hours.",
   },
   {
-    name: "Project Developer",
-    company: "Premium Township Client",
+    name: "B Singh",
+    company: "Channel Partner",
     quote:
-      "Warm, ready-to-visit prospects instead of cold form fills. The system filters and nurtures people before they reach us.",
+      "I got multiple site visits for Nobel Economic Township just within a week of starting the campaign with Sarabjeet and his Team.",
   },
   {
-    name: "Channel Partner",
-    company: "Delhi NCR",
+    name: "Mr. Rahul",
+    company: "Channel Partner",
     quote:
-      "No more missed follow ups. Every single enquiry now goes through a clear journey from first click to booked visit.",
+      "We got 4 site visits just within 10 days of starting for our Bangalore project Ajmera Marina.",
   },
 ];
 
@@ -163,7 +156,7 @@ export default function Page() {
   const CALENDLY_URL = "https://calendly.com/your-agency/growth-call"; // replace with real link
 
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(
-    null
+    null,
   );
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -217,16 +210,6 @@ export default function Page() {
         .animate-fade-in {
           animation: fadeIn 0.8s ease-out forwards;
         }
-        @keyframes loop-scroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        .animate-loop-scroll {
-          animation: loop-scroll 40s linear infinite;
-        }
-        .pause-animation:hover {
-          animation-play-state: paused;
-        }
       `}</style>
 
       {/* --- SCROLL PROGRESS BAR --- */}
@@ -236,8 +219,8 @@ export default function Page() {
       />
 
       <main className="min-h-screen bg-slate-950 text-slate-50 flex flex-col font-sans selection:bg-cyan-500/30">
-        {/* 1. OFFER / HERO */}
-        <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900">
+        {/* 1. OFFER / HERO (Centered and Enlarged) */}
+        <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 pb-16 pt-24 lg:pb-32 lg:pt-36">
           {/* Engineering Grid Background */}
           <div
             className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none"
@@ -249,188 +232,79 @@ export default function Page() {
           />
 
           <div className="absolute inset-0 pointer-events-none z-0">
-            <div className="absolute -top-40 -right-20 h-80 w-80 rounded-full bg-cyan-500/15 blur-[100px]" />
-            <div className="absolute top-1/2 -left-32 h-80 w-80 rounded-full bg-emerald-500/15 blur-[100px]" />
-            <div className="absolute -bottom-40 left-1/3 h-72 w-72 rounded-full bg-cyan-400/10 blur-[100px]" />
+            <div className="absolute top-10 right-1/4 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px]" />
+            <div className="absolute top-1/2 left-1/4 h-80 w-80 rounded-full bg-emerald-500/15 blur-[120px]" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-6xl px-4 py-6 flex flex-col lg:flex-row lg:items-center lg:gap-16 lg:py-20">
-            <div className="lg:w-1/2 space-y-6 animate-fade-in">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-slate-950/70 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-cyan-200 shadow-[0_0_25px_rgba(8,145,178,0.35)] backdrop-blur-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                AI Growth Engine For Realtors, CPs & Developers
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight">
-                We Help CPs & Developers add upto{" "}
-                <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">
-                  5 Lacs in Net Revenue
-                </span>
-                <span className="block mt-1">
-                  Within 90 Days — without extra workload.
-                </span>
-              </h1>
-
-              {/* MOBILE VIDEO (shows only on mobile, before paragraph) */}
-              <div className="mt-4 block lg:hidden">
-                <div className="relative w-full max-w-md rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-3 shadow-[0_24px_70px_rgba(8,47,73,0.6)] backdrop-blur-xl">
-                  <p className="mb-3 pl-1 text-xs font-medium text-slate-200 flex items-center gap-2">
-                    <span className="flex h-2 w-2 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                    </span>
-                    Watch how the AI Growth Engine works (3 min)
-                  </p>
-                  <div className="relative w-full overflow-hidden rounded-2xl border border-slate-700 bg-black aspect-video">
-                    <video
-                      className="h-full w-full object-cover opacity-90"
-                      src="/videos/replace-this.mp4"
-                      controls
-                    />
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                      <div className="h-16 w-16 rounded-full bg-cyan-500/20 flex items-center justify-center backdrop-blur-sm">
-                        <div className="h-12 w-12 rounded-full bg-cyan-500 text-slate-950 flex items-center justify-center pl-1 shadow-lg shadow-cyan-500/40">
-                          <svg
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            className="h-5 w-5"
-                          >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
-                  </div>
-                  <p className="mt-3 px-1 text-[11px] text-slate-400">
-                    Short breakdown of how we combine lead generation,
-                    automations and AI callers into one cohesive growth system.
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-                We run content-driven lead generation campaigns and then nurture
-                those leads on autopilot with AI Drip Flow Automations and
-                AI-powered voice agents, so your calendar fills with serious
-                site visits instead of cold enquiries.
-              </p>
-
-              {/* MAIN CTA BUTTON (Calendly) */}
-              <div className="space-y-4 pt-2">
-                <div className="relative inline-flex group">
-                  <div className="pointer-events-none absolute -inset-1 rounded-full bg-cyan-500/40 blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                  <a
-                    href={CALENDLY_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold tracking-wide text-slate-950 shadow-xl shadow-cyan-500/30 transition hover:bg-cyan-400 hover:scale-105"
-                  >
-                    Book Your Free AI Growth Call
-                  </a>
-                </div>
-
-                <ul className="grid gap-2 text-xs text-slate-300/90 sm:grid-cols-2 pt-2">
-                  {[
-                    "Diagnose your current funnel, offer and lead flow.",
-                    "Map our AI drip + voice stack into your model.",
-                    "Build a 90-day roadmap to consistent booked Site Visits.",
-                    "Done-For-You Site Visit Generation System.",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-1 w-1 rounded-full bg-emerald-400" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap items-center gap-4 pt-3 text-[11px] text-slate-400">
-                  <div>
-                    <p className="font-semibold text-slate-200">
-                      25+ Client Onboarded
-                    </p>
-                    <p>90+ Projects Sold</p>
-                  </div>
-                  <div className="h-8 w-px bg-slate-800" />
-                  <div>
-                    <p className="font-semibold text-slate-200">
-                      Value-first call
-                    </p>
-                    <p>No hard pitch, just strategy</p>
-                  </div>
-                </div>
-              </div>
+          <div className="relative z-10 mx-auto max-w-5xl px-4 flex flex-col items-center text-center space-y-8 animate-fade-in">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-slate-950/70 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-cyan-200 shadow-[0_0_25px_rgba(8,145,178,0.35)] backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              AI Growth Engine For Realtors, CPs & Developers
             </div>
 
-            {/* DESKTOP VIDEO (only on lg+) */}
-            <div className="mt-12 lg:mt-0 lg:w-1/2 hidden lg:flex justify-center">
-              <div className="relative w-full max-w-md rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-3 shadow-[0_24px_70px_rgba(8,47,73,0.6)] backdrop-blur-xl transition hover:scale-[1.01] duration-500 group">
-                <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-cyan-500/10 blur-3xl group-hover:bg-cyan-500/20 transition-colors" />
-                <p className="mb-3 pl-1 text-xs font-medium text-slate-200 flex items-center gap-2">
-                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                  </span>
-                  Watch how the AI Growth Engine works (3 min)
-                </p>
-                <div className="relative w-full overflow-hidden rounded-2xl border border-slate-700 bg-black aspect-video cursor-pointer group">
-                  <video
-                    className="h-full w-full object-cover opacity-90 group-hover:opacity-75 transition-opacity duration-300"
-                    src="/videos/replace-this.mp4"
-                    controls
-                  />
-                  {/* Subtle Pulse Overlay for Video */}
-                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                    <div className="h-16 w-16 rounded-full bg-cyan-500/20 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-                      <div className="h-12 w-12 rounded-full bg-cyan-500 text-slate-950 flex items-center justify-center pl-1 shadow-lg shadow-cyan-500/40">
-                        <svg
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                          className="h-5 w-5"
-                        >
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
+              We Help CPs & Developers add upto{" "}
+              <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">
+                5 Lacs in Net Revenue
+              </span>
+              <span className="block mt-2">
+                Within 90 Days — without extra workload.
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto font-medium">
+              We run content-driven lead generation campaigns and then nurture
+              those leads on autopilot with AI Drip Flow Automations and
+              AI-powered voice agents, so your calendar fills with serious site
+              visits instead of cold enquiries.
+            </p>
+
+            {/* MAIN CTA BUTTON (Calendly) */}
+            <div className="space-y-6 pt-6 flex flex-col items-center">
+              <div className="relative inline-flex group">
+                <div className="pointer-events-none absolute -inset-1 rounded-full bg-cyan-500/40 blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-12 py-5 text-lg font-bold tracking-wide text-slate-950 shadow-xl shadow-cyan-500/30 transition hover:bg-cyan-400 hover:scale-105"
+                >
+                  Book Your Free AI Growth Call
+                </a>
+              </div>
+
+              <ul className="grid gap-x-8 gap-y-3 text-sm text-slate-300/90 sm:grid-cols-2 text-left max-w-2xl mx-auto">
+                {[
+                  "Diagnose your current funnel, offer and lead flow.",
+                  "Map our AI drip + voice stack into your model.",
+                  "Build a 90-day roadmap to consistent booked Site Visits.",
+                  "Done-For-You Site Visit Generation System.",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs text-slate-400">
+                <div className="text-center">
+                  <p className="font-semibold text-slate-200">
+                    25+ Client Onboarded
+                  </p>
+                  <p>90+ Projects Sold</p>
                 </div>
-                <p className="mt-3 px-1 text-[11px] text-slate-400">
-                  Short breakdown of how we combine lead generation, automations
-                  and AI callers into one cohesive growth system.
-                </p>
+                <div className="h-8 w-px bg-slate-800" />
+                <div className="text-center">
+                  <p className="font-semibold text-slate-200">
+                    Value-first call
+                  </p>
+                  <p>No hard pitch, just strategy</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
-
-
-        {/* 2.5 STATS TICKER (Uses your stats array) */}
-        <div className="w-full border-b border-slate-800 bg-slate-950/50 py-3 overflow-hidden flex relative z-20">
-          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-950 to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-950 to-transparent z-10" />
-
-          <div className="flex animate-loop-scroll whitespace-nowrap pause-animation items-center">
-            {/* Render 3 times for seamless looping */}
-            {[...stats, ...stats, ...stats].map((stat, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 text-xs mx-8 opacity-80 hover:opacity-100 transition-opacity"
-              >
-                <span className="font-semibold text-slate-300">
-                  {stat.name}
-                </span>
-                <span className="h-1 w-1 rounded-full bg-slate-700" />
-                <span className="text-emerald-400 font-mono tracking-tight bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
-                  {stat.monthly}/mo
-                </span>
-                <span className="text-slate-500 text-[10px] uppercase tracking-wider">
-                  {stat.timeframe}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Mobile sticky CTA */}
         <div className="fixed bottom-0 inset-x-0 z-50 border-t border-cyan-500/30 bg-slate-950/90 backdrop-blur-lg md:hidden">
@@ -474,94 +348,99 @@ export default function Page() {
             </a>
           </div>
         </section>
+
         {/* Pain + System Fix Section */}
- <section className="border-b border-slate-800 bg-slate-950 relative overflow-hidden">
-  <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-       style={{
-         backgroundImage:
-           "linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(to right, #94a3b8 1px, transparent 1px)",
-         backgroundSize: "40px 40px",
-       }}
-  />
+        <section className="border-b border-slate-800 bg-slate-950 relative overflow-hidden">
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(to right, #94a3b8 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
 
-  <div className="mx-auto max-w-6xl px-4 py-14">
-    <div className="max-w-xl mb-10">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
-        The Real Estate Growth Problem
-      </p>
-      <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-slate-50">
-        Why most CPs & Developers struggle to scale consistently.
-      </h2>
-    </div>
+          <div className="mx-auto max-w-6xl px-4 py-14">
+            <div className="max-w-xl mb-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
+                The Real Estate Growth Problem
+              </p>
+              <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-slate-50">
+                Why most CPs & Developers struggle to scale consistently.
+              </h2>
+            </div>
 
-    <div className="grid gap-6 md:grid-cols-2">
-      {/* PAIN CARD */}
-      <div className="rounded-2xl border border-red-500/20 bg-slate-900/70 p-6 shadow-[0_0_40px_rgba(220,38,38,0.08)] hover:bg-slate-900 transition-all duration-300">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red-400">
-          Core Problems
-        </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              {/* PAIN CARD */}
+              <div className="rounded-2xl border border-red-500/20 bg-slate-900/70 p-6 shadow-[0_0_40px_rgba(220,38,38,0.08)] hover:bg-slate-900 transition-all duration-300">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red-400">
+                  Core Problems
+                </p>
 
-        <ul className="mt-4 space-y-3 text-sm text-slate-300">
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
-            No predictable stream of qualified leads coming daily.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
-            Follow-ups are inconsistent and slow — leads go cold fast.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
-            Teams manually chase enquiries and miss 40–60% of opportunities.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
-            No structured lifecycle: leads come in but do not convert.
-          </li>
-        </ul>
-      </div>
+                <ul className="mt-4 space-y-3 text-sm text-slate-300">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
+                    No predictable stream of qualified leads coming daily.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
+                    Follow-ups are inconsistent and slow — leads go cold fast.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
+                    Teams manually chase enquiries and miss 40–60% of
+                    opportunities.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400"></span>
+                    No structured lifecycle: leads come in but do not convert.
+                  </li>
+                </ul>
+              </div>
 
-      {/* SOLUTION CARD */}
-      <div className="rounded-2xl border border-emerald-500/30 bg-slate-900/80 p-6 shadow-[0_0_50px_rgba(16,185,129,0.12)] hover:bg-slate-900 transition-all duration-300">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-400">
-          Our System Fixes This
-        </p>
+              {/* SOLUTION CARD */}
+              <div className="rounded-2xl border border-emerald-500/30 bg-slate-900/80 p-6 shadow-[0_0_50px_rgba(16,185,129,0.12)] hover:bg-slate-900 transition-all duration-300">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-400">
+                  Our System Fixes This
+                </p>
 
-        <ul className="mt-4 space-y-3 text-sm text-slate-200">
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            Content-driven Lead Generation campaigns bring daily qualified leads.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            AI-powered Drip Flow automations reply instantly — 24/7.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            Behaviour-based nurturing moves leads through their buying journey.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            AI voice callers pre-qualify & auto-book site visits for your team.
-          </li>
-        </ul>
-      </div>
-    </div>
+                <ul className="mt-4 space-y-3 text-sm text-slate-200">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                    Content-driven Lead Generation campaigns bring daily
+                    qualified leads.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                    AI-powered Drip Flow automations reply instantly — 24/7.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                    Behaviour-based nurturing moves leads through their buying
+                    journey.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                    AI voice callers pre-qualify & auto-book site visits for
+                    your team.
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-    {/* Bottom CTA strip */}
-    <div className="mt-10 text-center">
-      <a
-        href={CALENDLY_URL}
-        target="_blank"
-        rel="noreferrer"
-        className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold text-slate-950 shadow-xl shadow-xl shadow-cyan-500/30 hover:bg-cyan-400 hover:scale-105 transition-all"
-      >
-        Fix My Lead Flow →
-      </a>
-    </div>
-  </div>
-</section>
-
+            {/* Bottom CTA strip */}
+            <div className="mt-10 text-center">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold text-slate-950 shadow-xl shadow-xl shadow-cyan-500/30 hover:bg-cyan-400 hover:scale-105 transition-all"
+              >
+                Fix My Lead Flow →
+              </a>
+            </div>
+          </div>
+        </section>
 
         {/* 4. LEADS + DRIP FLOW AUTOMATION + AI VOICE CALLER AGENTS */}
         <section className="border-b border-slate-800 bg-slate-950 relative overflow-hidden">
@@ -659,7 +538,7 @@ export default function Page() {
               </a>
             </div>
 
-            <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <div className="mt-8 max-w-4xl mx-auto grid gap-6 md:grid-cols-2">
               {[
                 {
                   name: "Sanju Sharma, Aaranyas, Kumar Infratech",
@@ -671,13 +550,7 @@ export default function Page() {
                   name: "Narinder Mutneja, PapaTOXY Consultants LLP",
                   review:
                     "Me and my team are working with drootle for our multiple residential & commercial projects in Noida . Our Cost per Lead and Lead quality has never been this better, we are looking forward to work with them in a longer run.",
-                  video: "/videos/narinder.mp4",
-                },
-                {
-                  name: "Jalaj Kedia, Apni Properties",
-                  review:
-                    "Sarabjeet, Darshan & their Team only believes in the promising and over deliver . The Quality and Quantity of  leads were so good that i couldn't handle all of them at once.",
-                  video: "/videos/jalaj.mp4",
+                  video: "/papatoxy.mp4",
                 },
               ].map((item) => (
                 <div
@@ -705,7 +578,7 @@ export default function Page() {
                   <div className="mt-3 text-xs text-slate-300 p-1">
                     <p className="font-semibold text-slate-50">{item.name}</p>
                     <p className="mt-1 text-[11px] text-slate-400 italic">
-                      "{item.review}"
+                      {item.review}
                     </p>
                   </div>
                 </div>
@@ -734,8 +607,7 @@ export default function Page() {
                   className="h-full w-full"
                   style={{
                     transform: `translateY(-${activeTestimonial * 100}%)`,
-                    transition:
-                      "transform 700ms cubic-bezier(0.4, 0, 0.2, 1)",
+                    transition: "transform 700ms cubic-bezier(0.4, 0, 0.2, 1)",
                   }}
                 >
                   {writtenTestimonials.map((t, idx) => (
@@ -989,157 +861,114 @@ export default function Page() {
           </div>
         </section>
 
-        {/* 7. WHO WE ARE (ABOUT US) */}
-        <section className="border-b border-slate-800 bg-gradient-to-b from-slate-950 to-slate-900">
-          <div className="mx-auto max-w-6xl px-4 py-14 grid gap-10 lg:grid-cols-[1.2fr,1fr] items-start">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                Who We Are
-              </p>
-              <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-slate-50">
-                A technical growth team behind the scenes of high-ticket brands.
-              </h2>
-              <p className="mt-3 text-sm text-slate-300">
-                We&apos;re operators, not gurus. Our background spans
-                performance marketing, funnel architecture, CRM implementation
-                and applied AI for lead management. We&apos;ve built, broken and
-                rebuilt systems inside agencies, coaching programs and SaaS
-                companies across the globe.
-              </p>
-              <p className="mt-2 text-sm text-slate-300">
-                On your AI Growth Call, you&apos;ll speak directly with a
-                strategist who has implemented these systems, not a commissioned
-                closer reading a script.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3 text-[11px] text-slate-300">
-                <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-1.5 shadow-sm">
-                  Specialists in service & info businesses
-                </span>
-                <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-1.5 shadow-sm">
-                  Tech stack-agnostic: we plug into what you already use
-                </span>
-              </div>
-            </div>
-
-            <SpotlightCard className="p-6 flex flex-col gap-4 text-sm text-slate-200">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-                Snapshot
-              </p>
-              <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-xs">
-                <div>
-                  <p className="text-slate-400 font-medium">Client verticals</p>
-                  <p>Agencies, coaches, consultants, B2B services</p>
-                </div>
-                <div>
-                  <p className="text-slate-400 font-medium">Core focus</p>
-                  <p>Lead systems, automations & AI sales enablement</p>
-                </div>
-                <div>
-                  <p className="text-slate-400 font-medium">Engagements</p>
-                  <p>Done-with-you & select done-for-you builds</p>
-                </div>
-                <div>
-                  <p className="text-slate-400 font-medium">Location</p>
-                  <p>Remote, serving clients worldwide</p>
-                </div>
-              </div>
-            </SpotlightCard>
-          </div>
-        </section>
-
-        {/* 8. ARTICLES */}
+        {/* 9. TEAM & FOUNDER SECTION */}
         <section className="border-b border-slate-800 bg-slate-950">
-          <div className="mx-auto max-w-6xl px-4 py-14">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                  Articles & Playbooks
-                </p>
-                <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-slate-50">
-                  Deep dives on what&apos;s working right now.
-                </h2>
-                <p className="mt-2 text-sm text-slate-300 max-w-xl">
-                  Use these breakdowns to understand the thinking behind our
-                  systems. We&apos;ll reference the most relevant ones on your
-                  call.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 grid gap-5 md:grid-cols-3">
-              {[1, 2, 3].map((idx) => (
-                <SpotlightCard
-                  key={idx}
-                  className="p-5 flex flex-col gap-3 group"
-                >
-                  <p className="text-[11px] uppercase tracking-[0.15em] text-cyan-300 group-hover:text-cyan-200">
-                    Playbook
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            {/* ABOUT THE FOUNDER BLOCK */}
+            <div className="mb-20 grid gap-12 lg:grid-cols-2 items-center">
+              {/* Text Side */}
+              <div className="space-y-6">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 mb-2">
+                    About The Founder
                   </p>
-                  <h3 className="text-sm font-semibold text-slate-50 group-hover:text-white transition-colors">
-                    {idx === 1 &&
-                      "Building an AI-assisted sales pipeline that doesn't annoy your leads"}
-                    {idx === 2 &&
-                      "From spreadsheet chaos to clean CRM: structuring your pipeline for scale"}
-                    {idx === 3 &&
-                      "Using voice agents to increase show-up rates without feeling robotic"}
+                  <h3 className="text-3xl sm:text-4xl font-bold text-slate-50">
+                    Sarabjeet Singh
                   </h3>
-                  <p className="text-xs text-slate-300">
-                    Tactical breakdown with screenshots, flows and scripts you
-                    can adapt to your own business.
-                  </p>
-                  <button className="mt-auto text-[11px] font-medium text-cyan-400 underline-offset-2 group-hover:underline text-left flex items-center gap-1">
-                    Read summary (coming soon)
-                  </button>
-                </SpotlightCard>
-              ))}
-            </div>
-          </div>
-        </section>
+                </div>
 
-        {/* 9. TEAM */}
-        <section className="border-b border-slate-800 bg-slate-950">
-          <div className="mx-auto max-w-6xl px-4 py-14">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                  Team
+                <p className="text-slate-300 leading-relaxed text-base">
+                  As the Founder & CEO of{" "}
+                  <span className="font-semibold text-white">Drootle</span>,
+                  Sarabjeet Singh helps real estate developers and channel
+                  partners scale their businesses through performance-driven
+                  outbound marketing, AI-powered automation, and high-converting
+                  lead generation systems. His focus is on building predictable
+                  revenue pipelines while helping brands establish a strong and
+                  visible market presence.
                 </p>
-                <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-slate-50">
-                  The people behind your growth system.
-                </h2>
-                <p className="mt-2 text-sm text-slate-300 max-w-xl">
-                  A lean team of strategists, engineers and operators who live
-                  inside funnels, CRMs and data dashboards.
+
+                <p className="text-slate-300 leading-relaxed text-base">
+                  Beyond growing businesses, Sarabjeet is passionate about
+                  mastering the skills that drive modern companies forward—from
+                  consumer psychology, paid advertising, CRMs, and content
+                  strategy to sales, negotiation, recruitment, leadership, and
+                  service delivery. Every campaign and client engagement becomes
+                  an opportunity to learn, refine, and build systems that create
+                  measurable business growth.
                 </p>
+
+                <div className="pt-2">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-4 py-1.5 text-xs text-slate-300 shadow-sm">
+                    <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+                    Founder & CEO • Drootle
+                  </span>
+                </div>
+              </div>
+
+              {/* Artistic Photo Composition Side */}
+              <div className="relative w-full h-[400px] sm:h-[450px] group cursor-default">
+                {/* Large Background Photo */}
+                <div className="absolute inset-0 md:inset-4 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-cyan-500/30">
+                  <div className="absolute inset-0 bg-cyan-950/40 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10" />
+                  {/* Replace this src with Sarabjeet's wide/action photo */}
+                  <img
+                    src="/sabby2.jpeg"
+                    alt="Sarabjeet Singh - Action"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  />
+                </div>
+
+                {/* Floating Portrait Photo */}
+                <div className="absolute -bottom-6 -left-4 sm:left-4 w-40 h-56 sm:w-48 sm:h-64 rounded-2xl overflow-hidden border-4 border-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.15)] transition-all duration-700 group-hover:-translate-y-4 group-hover:rotate-2 group-hover:shadow-[0_0_60px_rgba(34,211,238,0.3)] z-20">
+                  {/* Replace this src with Sarabjeet's portrait photo */}
+                  <img
+                    src="/sabby1.jpeg"
+                    alt="Sarabjeet Singh - Portrait"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute top-10 -right-6 h-32 w-32 rounded-full bg-emerald-500/10 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-50 pointer-events-none" />
+                <div className="absolute -bottom-10 right-10 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-50 pointer-events-none" />
               </div>
             </div>
 
+            {/* TEAM CARDS */}
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between border-t border-slate-800 pt-12">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
+                  The Core Team
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold text-slate-50">
+                  The operators behind your growth system.
+                </h2>
+              </div>
+            </div>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                { name: "Your Name", role: "Founder & Growth Architect" },
-                { name: "Team Member 2", role: "Automation & CRM Engineer" },
-                { name: "Team Member 3", role: "AI Conversation Designer" },
-                { name: "Team Member 4", role: "Performance Strategist" },
-              ].map((member) => (
+              {teamMembers.map((member) => (
                 <SpotlightCard
                   key={member.name}
-                  className="p-5 flex flex-col items-start gap-3"
+                  className="p-5 flex flex-col items-start gap-4"
                 >
-                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-cyan-400/80 to-emerald-400/80 flex items-center justify-center text-xs font-bold text-slate-950 shadow-lg shadow-emerald-900/20">
-                    {member.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-semibold text-slate-50">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 rounded-full object-cover border border-white/10"
+                  />
+
+                  <div>
+                    <h3 className="text-base font-semibold text-white">
                       {member.name}
-                    </p>
-                    <p className="text-xs text-slate-400">{member.role}</p>
+                    </h3>
+                    <p className="text-sm text-cyan-400">{member.role}</p>
                   </div>
-                  <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
-                    Works behind the scenes to ensure your systems are robust,
-                    fast and actually used by your team.
+
+                  <p className="text-sm leading-6 text-slate-400">
+                    {member.description}
                   </p>
                 </SpotlightCard>
               ))}
@@ -1173,8 +1002,9 @@ export default function Page() {
                   </div>
                   <div>
                     <p className="text-slate-500 mb-0.5">Serving clients in</p>
-                    <p className="font-medium text-slate-200">
-                      India, US, UK, Europe, Middle East & APAC
+                    <p className="font-medium text-slate-200 leading-relaxed">
+                      India, US, UK, Europe, Middle East, APAC, Thailand,
+                      Singapore, Malaysia
                     </p>
                   </div>
                   <div>
@@ -1215,8 +1045,7 @@ export default function Page() {
                       href={CALENDLY_URL}
                       target="_blank"
                       rel="noreferrer"
-                    className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold tracking-wide text-slate-950 shadow-xl shadow-cyan-500/30 transition hover:bg-cyan-400 hover:scale-105"
-
+                      className="animate-float inline-flex items-center justify-center rounded-full bg-cyan-500 px-10 py-4 text-base font-bold tracking-wide text-slate-950 shadow-xl shadow-cyan-500/30 transition hover:bg-cyan-400 hover:scale-105"
                     >
                       Book Your AI Growth Call
                     </a>
@@ -1227,13 +1056,8 @@ export default function Page() {
 
             <footer className="mt-6 flex flex-col gap-3 border-t border-slate-800 pt-8 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
               <p>
-                © {new Date().getFullYear()} Your Agency Name. All rights
-                reserved.
-              </p>
-              <p className="max-w-xl text-slate-600">
-                This site is not part of or endorsed by YouTube, Google or
-                Facebook. Facebook is a trademark of Meta Platforms, Inc.
-                YouTube and Google are trademarks of Google LLC.
+                © {new Date().getFullYear()} Drootle Marketing Solutions. All
+                rights reserved.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button className="underline-offset-2 hover:text-slate-300 transition-colors">
