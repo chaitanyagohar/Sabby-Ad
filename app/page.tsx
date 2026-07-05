@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Script from "next/script";
 
 const teamMembers = [
   {
@@ -153,7 +154,7 @@ const SpotlightCard = ({ children, className = "" }: SpotlightCardProps) => {
 
 // 2. Main Page Component
 export default function Page() {
-  const CALENDLY_URL = "https://calendly.com/your-agency/growth-call"; // replace with real link
+  const CALENDLY_URL = "https://calendly.com/drootlemedia/darvyn-in---real-estate-growth-scale-strategy-call--"; // replace with real link
 
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(
     null,
@@ -915,7 +916,7 @@ export default function Page() {
                   <img
                     src="/sabby2.jpeg"
                     alt="Sarabjeet Singh - Action"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover transition-all duration-700"
                   />
                 </div>
 
@@ -1023,14 +1024,14 @@ export default function Page() {
               </div>
 
               <div className="flex flex-col gap-4">
-                <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 aspect-video group relative">
+                {/* <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 aspect-video group relative">
                   <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none" />
                   <video
                     className="h-full w-full object-cover"
                     src="/videos/replace-this.mp4"
                     controls
                   />
-                </div>
+                </div> */}
                 <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 flex flex-col gap-4 text-center">
                   <h3 className="text-sm font-semibold text-slate-50">
                     Ready to see this built for your offer?
@@ -1054,7 +1055,7 @@ export default function Page() {
               </div>
             </div>
 
-            <footer className="mt-6 flex flex-col gap-3 border-t border-slate-800 pt-8 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <footer className="mt-6 mb-6 flex flex-col gap-3 border-t border-slate-800 pt-8 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
               <p>
                 © {new Date().getFullYear()} Drootle Marketing Solutions. All
                 rights reserved.
