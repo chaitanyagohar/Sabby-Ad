@@ -106,16 +106,9 @@ const adScreenshots: { img: string; caption: string; name: string }[] = [
     caption: "Grace Resilvia, Gurgaon",
     name: "Apni Properties",
   },
-  {
-    img: "/ss7.jpeg",
-    caption: "Nobel Economic Township",
-    name: "BSingh Realty",
-  },
 ];
 
-// --- COMPONENTS ---
 
-// 1. Spotlight Card Component for UX Glow Effect
 interface SpotlightCardProps {
   children: React.ReactNode;
   className?: string;
@@ -326,6 +319,19 @@ export default function Page() {
             </a>
           </div>
         </div>
+
+        {/* Floating WhatsApp Button */}
+        <a
+          href="https://wa.me/918076948307" // TODO: Add your WhatsApp link here
+          target="_blank"
+          rel="noreferrer"
+          className="fixed bottom-20 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300 md:bottom-8 md:right-8"
+          aria-label="Chat on WhatsApp"
+        >
+          <svg className="h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+          </svg>
+        </a>
 
         {/* 3. STANDALONE CTA BUTTON STRIP */}
         <section className="border-b border-slate-800 bg-slate-950/80">
@@ -546,12 +552,14 @@ export default function Page() {
                   review:
                     "We achieved a lead qualification rate of 90-95% for our luxury villa project in Almora, Uttarakhand.",
                   video: "/sanju.mp4",
+                  thumbnail: "/sanju-th.png", // Make sure this image is in your public folder
                 },
                 {
                   name: "Narinder Mutneja, PapaTOXY Consultants LLP",
                   review:
                     "Me and my team are working with drootle for our multiple residential & commercial projects in Noida . Our Cost per Lead and Lead quality has never been this better, we are looking forward to work with them in a longer run.",
                   video: "/papatoxy.mp4",
+                  thumbnail: "/papa-th.png", // Make sure this image is in your public folder
                 },
               ].map((item) => (
                 <div
@@ -562,6 +570,7 @@ export default function Page() {
                     <video
                       className="h-full w-full opacity-80 group-hover:opacity-60 transition-all duration-300"
                       src={item.video}
+                      poster={item.thumbnail}
                       controls
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -775,7 +784,7 @@ export default function Page() {
               <div
                 className="
           flex gap-4 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory
-          md:grid md:grid-cols-4 md:gap-5 md:overflow-visible md:pb-0 scrollbar-hide
+          md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-5 md:overflow-visible md:pb-0 scrollbar-hide
         "
               >
                 {[
@@ -857,62 +866,97 @@ export default function Page() {
                     </p>
                   </div>
                 ))}
+                
+                {/* SEE MORE CARD FOR DRIP FLOW */}
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    flex flex-col justify-center items-center gap-3
+                    min-w-[80%] snap-start md:min-w-0
+                    rounded-2xl border border-slate-800 bg-slate-900/40
+                    p-4 backdrop-blur-md cursor-pointer
+                    hover:bg-slate-900/70 transition-all duration-300 hover:scale-[1.02]
+                    group
+                  "
+                >
+                  <p className="text-lg font-semibold text-emerald-400 group-hover:text-emerald-300">
+                    See More
+                  </p>
+                  <p className="text-xs text-slate-400 text-center px-4">
+                    View more live workflows & automations
+                  </p>
+
+                  <div className="mt-2 px-4 py-1.5 text-[12px] font-medium text-emerald-300 border border-emerald-400/40 rounded-full group-hover:bg-emerald-400/10 transition-colors">
+                    Explore →
+                  </div>
+                </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 9. TEAM & FOUNDER SECTION */}
+        {/* 9. TEAM & FOUNDER SECTION (Darvyn.in Tech Vibe) */}
         <section className="border-b border-slate-800 bg-slate-950">
-          <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="mx-auto max-w-6xl px-4 py-20">
+            
             {/* ABOUT THE FOUNDER BLOCK */}
-            <div className="mb-20 grid gap-12 lg:grid-cols-2 items-center">
+            <div className="mb-24 grid gap-12 lg:grid-cols-2 items-center">
               {/* Text Side */}
               <div className="space-y-6">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 mb-2">
-                    About The Founder
+                  <p className="text-xs font-mono uppercase tracking-[0.2em] text-cyan-400 mb-3">
+                    // About The Founder
                   </p>
-                  <h3 className="text-3xl sm:text-4xl font-bold text-slate-50">
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-50 tracking-tight">
                     Sarabjeet Singh
                   </h3>
                 </div>
 
-                <p className="text-slate-300 leading-relaxed text-base">
-                  As the Founder & CEO of{" "}
-                  <span className="font-semibold text-white">Drootle</span>,
-                  Sarabjeet Singh helps real estate developers and channel
-                  partners scale their businesses through performance-driven
-                  outbound marketing, AI-powered automation, and high-converting
-                  lead generation systems. His focus is on building predictable
-                  revenue pipelines while helping brands establish a strong and
-                  visible market presence.
-                </p>
+                <div className="space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base border-l border-slate-800 pl-5 ml-1">
+                  <p>
+                    As the Founder & CEO of{" "}
+                    <span className="font-semibold text-white">Drootle</span>,
+                    Sarabjeet Singh helps real estate developers and channel
+                    partners scale their businesses through performance-driven
+                    outbound marketing, AI-powered automation, and high-converting
+                    lead generation systems. His focus is on building predictable
+                    revenue pipelines while helping brands establish a strong and
+                    visible market presence.
+                  </p>
 
-                <p className="text-slate-300 leading-relaxed text-base">
-                  Beyond growing businesses, Sarabjeet is passionate about
-                  mastering the skills that drive modern companies forward—from
-                  consumer psychology, paid advertising, CRMs, and content
-                  strategy to sales, negotiation, recruitment, leadership, and
-                  service delivery. Every campaign and client engagement becomes
-                  an opportunity to learn, refine, and build systems that create
-                  measurable business growth.
-                </p>
+                  <p>
+                    Beyond growing businesses, Sarabjeet is passionate about
+                    mastering the skills that drive modern companies forward—from
+                    consumer psychology, paid advertising, CRMs, and content
+                    strategy to sales, negotiation, recruitment, leadership, and
+                    service delivery. Every campaign and client engagement becomes
+                    an opportunity to learn, refine, and build systems that create
+                    measurable business growth.
+                  </p>
+                </div>
 
                 <div className="pt-2">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-4 py-1.5 text-xs text-slate-300 shadow-sm">
-                    <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
-                    Founder & CEO • Drootle
-                  </span>
+                  <div className="inline-flex items-center gap-2.5 rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-xs font-medium text-slate-300">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                    </span>
+                    Leading Drootle Marketing Solutions
+                  </div>
                 </div>
               </div>
 
-              {/* Artistic Photo Composition Side */}
+              {/* Diagonal Images Side (Zero Overlap) */}
               <div className="relative w-full h-[400px] sm:h-[450px] group cursor-default">
-                {/* Large Background Photo */}
-                <div className="absolute inset-0 md:inset-4 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all duration-500 group-hover:scale-[1.02] group-hover:border-cyan-500/30">
-                  <div className="absolute inset-0 bg-cyan-950/40 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10" />
-                  {/* Replace this src with Sarabjeet's wide/action photo */}
+                {/* Decorative Glow Backgrounds */}
+                <div className="absolute top-0 right-0 h-48 w-48 rounded-full bg-cyan-500/10 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-30 pointer-events-none z-0" />
+                <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-emerald-500/5 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-30 pointer-events-none z-0" />
+
+                {/* Top Right Image (Action Photo) */}
+                <div className="absolute top-0 right-0 w-[55%] h-[45%] sm:h-[48%] rounded-2xl overflow-hidden border border-slate-800 transition-all duration-700 group-hover:-translate-y-2 group-hover:translate-x-2 group-hover:border-cyan-500/30 z-10">
+                  <div className="absolute inset-0 bg-cyan-950/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500 z-10" />
                   <img
                     src="/sabby2.jpeg"
                     alt="Sarabjeet Singh - Action"
@@ -920,60 +964,92 @@ export default function Page() {
                   />
                 </div>
 
-                {/* Floating Portrait Photo */}
-                <div className="absolute -bottom-6 -left-4 sm:left-4 w-40 h-56 sm:w-48 sm:h-64 rounded-2xl overflow-hidden border-4 border-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.15)] transition-all duration-700 group-hover:-translate-y-4 group-hover:rotate-2 group-hover:shadow-[0_0_60px_rgba(34,211,238,0.3)] z-20">
-                  {/* Replace this src with Sarabjeet's portrait photo */}
+                {/* Bottom Left Image (Portrait Photo) */}
+                <div className="absolute bottom-0 left-0 w-[40%] h-[45%] sm:h-[48%] rounded-2xl overflow-hidden border border-slate-800 transition-all duration-700 group-hover:translate-y-2 group-hover:-translate-x-2 group-hover:border-emerald-500/30 z-10">
                   <img
                     src="/sabby1.jpeg"
                     alt="Sarabjeet Singh - Portrait"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-all duration-700"
                   />
                 </div>
 
-                {/* Decorative Elements */}
-                <div className="absolute top-10 -right-6 h-32 w-32 rounded-full bg-emerald-500/10 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-50 pointer-events-none" />
-                <div className="absolute -bottom-10 right-10 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-50 pointer-events-none" />
+                {/* Artistic connecting element */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-slate-700 group-hover:text-cyan-500/50 transition-colors duration-700 z-0 pointer-events-none">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="19" x2="19" y2="5"></line>
+                    <polyline points="5 5 19 5 19 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
 
-            {/* TEAM CARDS */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between border-t border-slate-800 pt-12">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                  The Core Team
+            {/* TEAM CARDS (Typography & Code Vibe - No Images) */}
+            <div className="border-t border-slate-800 pt-16">
+              <div className="mb-10">
+
+                <p className="text-xs font-mono uppercase tracking-[0.2em] text-cyan-400 mb-2">
+                   The Core Team
                 </p>
-                <h2 className="mt-2 text-2xl font-semibold text-slate-50">
-                  The operators behind your growth system.
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-50 tracking-tight">
+                  The operators behind the system.
                 </h2>
               </div>
-            </div>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {teamMembers.map((member) => (
-                <SpotlightCard
-                  key={member.name}
-                  className="p-5 flex flex-col items-start gap-4"
-                >
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    width={56}
-                    height={56}
-                    className="h-14 w-14 rounded-full object-cover border border-white/10"
-                  />
 
-                  <div>
-                    <h3 className="text-base font-semibold text-white">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm text-cyan-400">{member.role}</p>
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {[
+                  { 
+                    name: "Darshan Jade", 
+                    role: "Chief Marketing Officer", 
+                    description: "Architects the core acquisition strategies and brand positioning for high-ticket real estate campaigns." 
+                  },
+                  { 
+                    name: "Chaitanya Gohar", 
+                    role: "Chief Technical Officer", 
+                    description: "Builds and maintains the AI-driven automation workflows, ensuring seamless data flow between ads, CRM, and voice agents." 
+                  },
+                  { 
+                    name: "Rishabh Verma", 
+                    role: "Content Manager", 
+                    description: "Crafts high-converting ad copy and lead nurture sequences that turn cold traffic into booked site visits." 
+                  },
+                  { 
+                    name: "Operations Team", 
+                    role: "Client Success", 
+                    description: "Ensures seamless onboarding, daily campaign monitoring, and real-time adjustments to hit revenue targets." 
+                  },
+                ].map((member) => (
+                  <div
+                    key={member.name}
+                    className="group relative flex flex-col rounded-2xl border border-slate-800 bg-slate-900/40 p-6 hover:bg-slate-900 transition-colors duration-300 overflow-hidden"
+                  >
+                    {/* Top Animated Accent Line */}
+                    <div className="absolute top-0 left-0 h-1 w-full bg-slate-800 group-hover:bg-cyan-500 transition-colors duration-300" />
+                    
+                    <div className="mb-4">
+                      <p className="text-[10px] font-mono text-cyan-500 uppercase tracking-widest mb-2">
+                        {member.role}
+                      </p>
+                      <h3 className="text-lg font-semibold text-slate-100 group-hover:text-white transition-colors">
+                        {member.name}
+                      </h3>
+                    </div>
+
+                    <p className="text-xs leading-relaxed text-slate-400 mt-auto">
+                      {member.description}
+                    </p>
+
+                    {/* Tech-inspired corner accent */}
+                    <div className="absolute bottom-3 right-3 text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
                   </div>
-
-                  <p className="text-sm leading-6 text-slate-400">
-                    {member.description}
-                  </p>
-                </SpotlightCard>
-              ))}
+                ))}
+              </div>
             </div>
+
           </div>
         </section>
 
@@ -1024,14 +1100,6 @@ export default function Page() {
               </div>
 
               <div className="flex flex-col gap-4">
-                {/* <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 aspect-video group relative">
-                  <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none" />
-                  <video
-                    className="h-full w-full object-cover"
-                    src="/videos/replace-this.mp4"
-                    controls
-                  />
-                </div> */}
                 <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 flex flex-col gap-4 text-center">
                   <h3 className="text-sm font-semibold text-slate-50">
                     Ready to see this built for your offer?
