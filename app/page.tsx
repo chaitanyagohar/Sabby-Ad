@@ -907,7 +907,7 @@ export default function Page() {
               <div className="space-y-6">
                 <div>
                   <p className="text-xs font-mono uppercase tracking-[0.2em] text-cyan-400 mb-3">
-                    // About The Founder
+                    About The Founder
                   </p>
                   <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-50 tracking-tight">
                     Sarabjeet Singh
@@ -1129,9 +1129,9 @@ export default function Page() {
                 rights reserved.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button className="underline-offset-2 hover:text-slate-300 transition-colors">
+                <a href="/privacy-policy"><button  className="underline-offset-2 hover:text-slate-300 transition-colors">
                   Privacy Policy
-                </button>
+                </button></a>
                 <button className="underline-offset-2 hover:text-slate-300 transition-colors">
                   Terms & Conditions
                 </button>
